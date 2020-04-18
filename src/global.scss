@@ -24,3 +24,62 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+/** Custom CSS */
+.favorito-toast {
+  text-align: center !important;
+}
+
+.poster {
+  width: 110px !important;
+  height: 160px !important;
+}
+
+.infinite-loading .infinite-loading-spinner .md.spinner-crescent.hydrated {
+  color: var(--ion-color-primary) !important;
+}
+
+/** Animate.css */
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.animated.fast {
+  -webkit-animation-duration: 700ms;
+  animation-duration: 700ms;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+from {
+  opacity: 0;
+}
+
+to {
+  opacity: 1;
+}
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}

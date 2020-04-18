@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      Favoritos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid fixed *ngFor="let dataGenre of dataGenders">
+    <ion-row>
+      <ion-col size="12">
+        <h4>{{ dataGenre.genre.name }}</h4>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <app-slideshow-poster [peliculas]="dataGenre.favsMovies"></app-slideshow-poster>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

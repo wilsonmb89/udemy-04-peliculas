@@ -1,0 +1,49 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      Buscar Película
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-toolbar>
+  <ion-searchbar placeholder="Buscar película"
+                  animated
+                  debounce="700"
+                  [value]="textoBuscar"
+                  (ionChange)="buscar($event)"
+                  ></ion-searchbar>
+</ion-toolbar>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label color="primary" [class.ion-text-center]="showLoading">
+        <ion-spinner *ngIf="showLoading" color="primary" name="dots"></ion-spinner>
+        <strong *ngIf="!showLoading">{{ !!resultadoPeliculas && resultadoPeliculas.length > 0 ? 'Resultados:' : 'Sin Resultados.'}}</strong>
+      </ion-label>
+    </ion-list-header>
+    <ion-item lines="none" *ngFor="let pares of resultadoPeliculas | pares">
+      <ion-row>
+        <ion-col size="6" *ngFor="let pelicula of pares">
+          <ion-card class="animated fast fadeIn" (click)="openDetail(pelicula.id)">
+            <img [src]="pelicula.poster_path | imagen">
+            <ion-card-header>
+              <ion-card-subtitle>
+                <ion-label>{{ pelicula.release_date }}</ion-label>
+              </ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <h2>{{ pelicula.title }}</h2>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll #infiniteScrollSearch
+                        threshold="150px"
+                        (ionInfinite)="loadNextPage($event)">
+    <ion-infinite-scroll-content loadingSpiner="crescent"
+                                  loadingText="Cargando mas películas"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
